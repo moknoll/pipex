@@ -6,7 +6,7 @@
 /*   By: moritzknoll <moritzknoll@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:47:25 by moritzknoll       #+#    #+#             */
-/*   Updated: 2025/01/23 10:11:25 by moritzknoll      ###   ########.fr       */
+/*   Updated: 2025/01/23 18:32:39 by moritzknoll      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,23 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-int main()
-{
-	{
-    const char *str = "ls -l";
-    char delim = ' ';
-    int count;
-    char **result;
+// int main()
+// {
+// 	{
+//     const char *str = "ls -l";
+//     char delim = ' ';
+//     int count;
+//     char **result;
 
-    result = ft_split(str, delim);
-    count = count_words(str, delim);
+//     result = ft_split(str, delim);
+//     count = count_words(str, delim);
 
-    for (int i = 0; i < count; i++)
-    {
-        printf("Part %d: %s\n", i + 1, result[i]);
-        free(result[i]);
-    }
-    free(result);
-    return 0;
-}
-}
+//     for (int i = 0; i < count; i++)
+//     {
+//         printf("Part %d: %s\n", i + 1, result[i]);
+//         free(result[i]);
+//     }
+//     free(result);
+//     return 0;
+// }
+// }

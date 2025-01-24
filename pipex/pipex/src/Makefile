@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I../libft
 LDFLAGS = -L../libft -lft
-SRC = main.c
+SRC = pipex.c pipex_utils.c pipex_utils2.c
 OBJ = $(SRC:.c=.o)
 NAME = pipex
 
