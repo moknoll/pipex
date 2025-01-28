@@ -6,7 +6,7 @@
 /*   By: mknoll <mknoll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:11:48 by moritzknoll       #+#    #+#             */
-/*   Updated: 2025/01/24 13:00:42 by mknoll           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:36:31 by mknoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	error_handling(int code)
 	{
 		ft_putstr_fd("Usage: ./pipex infile cmd1 cmd2 outfile\n", 2);
 		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		ft_putstr_fd("Usage: command not found\n", 2);
+		exit(1);
 	}
 }
 
@@ -60,20 +65,20 @@ void	ft_exec(char *cmd, char *env[])
 	char	**args;
 
 	if (!cmd | !*cmd)
-		exit(127);
+		error_handling(2);
 	args = ft_split(cmd, ' ');
 	if (!args | !args[0])
 	{
 		ft_free_tab(args);
-		exit(127);
+		error_handling(2);
 	}
 	path = get_path(args[0], env);
 	if (!path || execve(path, args, env) == -1)
 	{
-		perror("execve error");
+		perror("command not found");
 		ft_free_tab(args);
 		free(path);
-		exit(127);
+		exit(1);
 	}
 	ft_free_tab(args);
 	free(path);

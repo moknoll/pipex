@@ -6,7 +6,7 @@
 /*   By: mknoll <mknoll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:19:33 by mknoll            #+#    #+#             */
-/*   Updated: 2025/01/24 13:26:45 by mknoll           ###   ########.fr       */
+/*   Updated: 2025/01/27 13:51:14 by mknoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[], char *env[])
 	pid_t	pid;
 
 	if (argc != 5)
-		exit(EXIT_FAILURE);
+		error_handling(1);
 	if (pipe(fds) == -1)
 		exit(EXIT_FAILURE);
 	pid = fork();
@@ -54,7 +54,7 @@ int	main(int argc, char *argv[], char *env[])
 		child_process(argv, fds, env);
 	else
 	{
-		waitpid(pid, NULL, 0);
+		waitpid(-1, NULL, 0);
 		parent_process(argv, fds, env);
 	}
 	return (0);
